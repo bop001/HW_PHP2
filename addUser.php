@@ -29,18 +29,21 @@
   	$email = $_POST['email'] = trim($_POST['email']);
   	$submit = $_POST['submit'];
 
-	if(empty($_POST['username'])) exit(); 
-	if(empty($_POST['username'])) exit('Поле "Логин" не заполнено'); 
-  	if(empty($_POST['password1'])) exit('Одно из полей "Пароль" не заполнено'); 
-  	if(empty($_POST['password2'])) exit('Одно из полей "Пароль" не заполнено');
-  	if($_POST['password1'] != $_POST['password2']) exit('Пароли не совпадают'); 
+  if (empty($name) && empty($pass1) && empty($pass2) && empty($email) && isset($submit)) {
+        echo '<div class="massage-error">"Введите свои данные"</div>';
+     }
+  if(empty($_POST['username'])) exit(); 
+  if(empty($_POST['username'])) exit('<div class="massage-error">Поле "Логин" не заполнено</div'); 
+    if(empty($_POST['password1'])) exit('<div class="massage-error">Одно из полей "Пароль" не заполнено </div>'); 
+    if(empty($_POST['password2'])) exit('<div class="massage-error">Одно из полей "Пароль" не заполнено </div>');
+    if($_POST['password1'] != $_POST['password2']) exit('<div class="massage-error">Пароли не совпадают</div>'); 
 
-  	if(!empty($_POST['email'])){ 
+    if(!empty($_POST['email'])){ 
       if(!preg_match("|^[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,6}$|i", $_POST['email'])) { 
-      exit('Поле "E-mail" должно соответствовать формату somebody@somewhere.ru'); 
+      exit('<div class="massage-error">Поле "E-mail" должно соответствовать формату somebody@somewhere.ru</div>'); 
       } 
     }
-   if (!empty($name) && !empty($pass1) && !empty($pass2) && !empty($email) && !empty($submit)) {
+   if (!empty($name) && !empty($pass1) && !empty($pass2) && !empty($email)) {
        echo '<div class="massage">"Поздравляю вы зарегистрированы"</div>';
      }  
   $filename = "users.csv";

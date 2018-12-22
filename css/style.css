@@ -1,3 +1,6 @@
+a {
+	text-decoration: none;
+}
 .wrapper form {
 	width: 290px;
 	margin: 0 auto;
@@ -27,13 +30,37 @@
 }
 .wrapper-index {
 	margin: 0 auto;
-	width: 100px;
+	width: 300px;
 	margin-top: 150px;
 	display: flex;
 	justify-content: space-between;
-
+	border: 5px solid #ccc;
+	padding: 35px;
+}
+.wrapper-index a {
+	font-size: 35px;
+	transition: 0.5s;
+	text-transform: uppercase;
+}
+.wrapper-index a:first-child:hover {
+	color: red;
+	transform: scale(1.5);
+}
+.wrapper-index a:last-child:hover {
+	color: green;
+	transform: scale(1.5);
 }
 .massage {
-	width: 248px;
+	width: 30%;
+    text-align: center;
 	margin: 15px auto;
-	color: green }
+	color: #fff;
+	background: green; 
+}
+.massage-error {
+	color: white;
+    text-align: center;
+    background: red;
+    width: 30%;
+    margin: 0 auto;
+}
