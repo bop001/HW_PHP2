@@ -1,4 +1,39 @@
-.wrapper {
+.wrapper form {
+	width: 290px;
+	margin: 0 auto;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	margin-top: 150px;
+	border: 1px solid #ccc;
+	padding: 0 15px;
 }
+.wrapper label:first-child {
+	margin-top: 15px;
+}
+.wrapper label {
+	margin-top: 5px;
+}
+.wrapper input {
+	margin-top: 5px;
+}
+.wrapper input:last-child {
+	width: 100%;
+	margin-bottom: 15px;
+}
+.wrapper input:last-child:hover {
+	background: #ccc;
+	color: red;
+}
+.wrapper-index {
+	margin: 0 auto;
+	width: 100px;
+	margin-top: 150px;
+	display: flex;
+	justify-content: space-between;
+
+}
+.massage {
+	width: 248px;
+	margin: 15px auto;
+	color: green }

@@ -2,20 +2,26 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
 	<title>Регистрация нового пользователя</title>
 </head>
 <body>
-	<div class="wrapper">
-		<form action="addUser.php" method="post">
-			<input type="text" name="username" placeholder="Введите ваш логин">
-			<input type="password" name="password1" placeholder="Введите ваш пароль">
-			<input type="password" name="password2" placeholder="Введите ваш пароль">
-			<input type="email" name="email" placeholder="Введите вашу почту">
-			<input type="submit" name="submit" value="Отправить">
-
-		</form>
-	</div>
-
+  <div class="back">
+		<a href="index.php">На главную</a>
+  </div>
+  <div class="wrapper">
+    <form action="addUser.php" method="post">
+      <label for="username">Логин:</label>
+      <input type="text" id="username" name="username" placeholder="Введите ваш логин">
+      <label for="password1">Пароль:</label>
+      <input type="password" id="password1" name="password1" placeholder="Введите ваш пароль">
+      <label for="password2">Пароль еще раз:</label>
+      <input type="password" id="password2" name="password2" placeholder="Введите ваш пароль">
+      <label for="email">Почта:</label>
+      <input type="email" id="email" name="email" placeholder="Введите вашу почту">
+      <input type="submit" name="submit" value="Отправить">
+    </form>
+  </div>
 <?php
  	$name = $_POST['username'] = trim($_POST['username']); 
   	$pass1 = $_POST['password1'] = trim($_POST['password1']); 
@@ -30,11 +36,13 @@
   	if($_POST['password1'] != $_POST['password2']) exit('Пароли не совпадают'); 
 
   	if(!empty($_POST['email'])){ 
-    if(!preg_match("|^[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,6}$|i", $_POST['email'])) 
-    { 
+      if(!preg_match("|^[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,6}$|i", $_POST['email'])) { 
       exit('Поле "E-mail" должно соответствовать формату somebody@somewhere.ru'); 
-    } 
-  } 
+      } 
+    }
+   if (!empty($name) && !empty($pass1) && !empty($pass2) && !empty($email) && !empty($submit)) {
+       echo '<div class="massage">"Поздравляю вы зарегистрированы"</div>';
+     }  
   $filename = "users.csv";
   $arr = file($filename); 
   
@@ -55,9 +63,7 @@
          $_POST['url']."\r\n"; 
   fwrite($fd,$str); 
   fclose($fd); 
-  echo "<HTML><HEAD> 
-         <META HTTP-EQUIV='Refresh' CONTENT='0; URL=$_SERVER[PHP_SELF]'> 
-        </HEAD></HTML>"; 
+  
 ?>	
 </body>
 </html>
